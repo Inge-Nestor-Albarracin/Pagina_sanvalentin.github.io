@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanvalenvalentin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="Titulo1">
+        <center><H1>Feliz San Valentin</H1></center>
+    </div>
+    
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/pictures/WhatsApp Image 2026-02-08 at 3.19.13 AM.jpeg" class="d-block w-100" alt="imagen1">
+            </div>
+            <div class="carousel-item">
+                <img src="/pictures/WhatsApp Image 2026-02-08 at 3.19.13 AM(1).jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/pictures/WhatsApp Image 2026-02-08 at 3.19.21 AM.jpeg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- SECCIÓN DE CARTAS -->
+    <section class="seccion-cartas">
+        <h2 class="titulo-cartas">Mensajitos de amor</h2>
+        
+        <div class="contenedor-cartas">
+            <!-- Carta 1 -->
+            <div class="carta carta-rosa">
+                <div class="carta-contenido">
+                    <p class="texto-carta">Gracias por estar en mi vida mi colochita, te amo cada dia mas</p>
+                </div>
+            </div>
+            
+            <!-- Carta 2 -->
+            <div class="carta carta-lila">
+                <div class="carta-contenido">
+                    <p class="texto-carta">Espero podamos vivir muchos mas años juntooos</p>
+                </div>
+            </div>
+            
+            <!-- Carta 3 -->
+            <div class="carta carta-coral">
+                <div class="carta-contenido">
+                    <p class="texto-carta">Eres mi vida, eres lo ultimo y lo primero que pienso en mi dia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN BUCKET LIST -->
+    <section class="bucket-list-section">
+        <h2 class="titulo-bucket">Nuestra Bucket List 💖</h2>
+        <p class="subtitulo-bucket">Cosas que quiero hacer contigo</p>
+        
+        <div class="contenedor-lista">
+            <!-- Item 1 -->
+            <div class="item-bucket">
+                <input type="checkbox" id="item1" class="checkbox-bucket">
+                <label for="item1" class="texto-item">
+                    <span class="icono-item">❤️</span>
+                    Cocinar pasta juntos
+                </label>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="item-bucket">
+                <input type="checkbox" id="item2" class="checkbox-bucket">
+                <label for="item2" class="texto-item">
+                    <span class="icono-item">✈️</span>
+                    Viajar a Mongui
+                </label>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="item-bucket">
+                <input type="checkbox" id="item3" class="checkbox-bucket">
+                <label for="item3" class="texto-item">
+                    <span class="icono-item">🎬</span>
+                    Maratonear My hero academia
+                </label>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="item-bucket">
+                <input type="checkbox" id="item4" class="checkbox-bucket">
+                <label for="item4" class="texto-item">
+                    <span class="icono-item">🍽️</span>
+                    Ir a patio cafe jsjsjs
+                </label>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="item-bucket">
+                <input type="checkbox" id="item5" class="checkbox-bucket">
+                <label for="item5" class="texto-item">
+                    <span class="icono-item">⭐</span>
+                    Ir a un mirador romanticon
+                </label>
+            </div>
+        </div>
+        
+        <!-- Formulario para agregar más items -->
+        <div class="agregar-item">
+            <input type="text" class="input-nuevo-item" placeholder="Añadir otro deseo...">
+            <button class="btn-agregar">+ Agregar</button>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Carrusel
+        document.addEventListener('DOMContentLoaded', function() {
+            var myCarousel = document.getElementById('carouselExampleIndicators');
+            var carousel = new bootstrap.Carousel(myCarousel, {
+                interval: 3000
+            });
+        });
+
+        // BUCKET LIST JAVASCRIPT
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar items guardados
+            cargarBucketList();
+            
+            // Guardar estado cuando se marca/desmarca un checkbox
+            document.querySelectorAll('.checkbox-bucket').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    guardarBucketList();
+                });
+            });
+            
+            // Agregar nuevo item
+            document.querySelector('.btn-agregar').addEventListener('click', agregarNuevoItem);
+            
+            // Permitir agregar con Enter
+            document.querySelector('.input-nuevo-item').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    agregarNuevoItem();
+                }
+            });
+        });
+
+        // Función para guardar en localStorage
+        function guardarBucketList() {
+            const items = document.querySelectorAll('.item-bucket');
+            const lista = [];
+            
+            items.forEach(item => {
+                const checkbox = item.querySelector('.checkbox-bucket');
+                const texto = item.querySelector('.texto-item').textContent.replace('❤️', '').replace('✈️', '').replace('🎬', '').replace('🍽️', '').replace('⭐', '').trim();
+                lista.push({
+                    texto: texto,
+                    completado: checkbox.checked
+                });
+            });
+            
+            localStorage.setItem('bucketListSanValentin', JSON.stringify(lista));
+        }
+
+        // Función para cargar desde localStorage
+        function cargarBucketList() {
+            const guardado = localStorage.getItem('bucketListSanValentin');
+            if (guardado) {
+                const lista = JSON.parse(guardado);
+                const items = document.querySelectorAll('.item-bucket');
+                
+                items.forEach((item, index) => {
+                    if (lista[index]) {
+                        const checkbox = item.querySelector('.checkbox-bucket');
+                        checkbox.checked = lista[index].completado;
+                    }
+                });
+            }
+        }
+
+        // Función para agregar nuevo item
+        function agregarNuevoItem() {
+            const input = document.querySelector('.input-nuevo-item');
+            const texto = input.value.trim();
+            
+            if (texto === '') {
+                alert('Por favor escribe algo primero');
+                return;
+            }
+            
+            // Crear nuevo item
+            const contenedorLista = document.querySelector('.contenedor-lista');
+            const nuevoId = 'item' + (document.querySelectorAll('.item-bucket').length + 1);
+            
+            const nuevoItem = document.createElement('div');
+            nuevoItem.className = 'item-bucket';
+            nuevoItem.innerHTML = `
+                <input type="checkbox" id="${nuevoId}" class="checkbox-bucket">
+                <label for="${nuevoId}" class="texto-item">
+                    <span class="icono-item">❤️</span>
+                    ${texto}
+                </label>
+            `;
+            
+            contenedorLista.appendChild(nuevoItem);
+            
+            // Agregar evento al nuevo checkbox
+            nuevoItem.querySelector('.checkbox-bucket').addEventListener('change', function() {
+                guardarBucketList();
+            });
+            
+            // Limpiar input y guardar
+            input.value = '';
+            guardarBucketList();
+            
+            // Efecto visual
+            nuevoItem.style.opacity = '0';
+            setTimeout(() => {
+                nuevoItem.style.transition = 'opacity 0.5s';
+                nuevoItem.style.opacity = '1';
+            }, 10);
+        }
+    </script>
+</body>
+</html>
